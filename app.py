@@ -5,7 +5,7 @@ import requests
 # Create a Flask application
 app = Flask(__name__)
 
-with open('models/random_forest_model.pkl', 'rb') as file:
+with open('models/decision_tree.pkl', 'rb') as file:
     rf_model = pickle.load(file)
 # Define a route to render the HTML form
 @app.route('/')
