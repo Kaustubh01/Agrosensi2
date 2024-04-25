@@ -1,7 +1,7 @@
 import pickle
 
 from flask import Flask, render_template, request
-
+import requests
 # Create a Flask application
 app = Flask(__name__)
 
@@ -37,12 +37,20 @@ def crop_recommendation():
         }
 
         print(f'data: {N,P, K, temperature,humidity, ph, rainfall}')
-        print(f'prediction: {prediction_mapping[prediction[0]]}')
+        img_url = get_image(prediction_mapping[prediction[0]])
 
-        return render_template('result.html', prediction= prediction_mapping[prediction[0]])
+        return render_template('result.html', prediction= prediction_mapping[prediction[0]],img_url = img_url)
 
     return render_template('crop_recommendation.html')
 
+
+def get_image(query):
+    url = f"https://www.googleapis.com/customsearch/v1?key=AIzaSyCfeYWn-Uh7Kzcj6hN21yzhyEPcYtlHGd8&cx=86de2d6d01e8b443c&q={query}&searchType=image"
+    response = requests.get(url)
+    data = response.json()
+    image_url = data['items'][0]['link']
+    print(f'image url: {image_url}')
+    return image_url
 
 # Run the Flask application
 if __name__ == '__main__':

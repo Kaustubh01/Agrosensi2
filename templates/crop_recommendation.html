@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/recommendation.css') }}">
 <body>
- <h2>Crop Prediction Form</h2>
-    <form action="{{ url_for('crop_recommendation') }}" method="post">
-        <label for="N">Nitrogen (N):</label>
-        <input type="text" id="N" name="N" placeholder="value should be between 0 to 150"><br><br>
 
-        <label for="P">Phosphorus (P):</label>
-        <input type="text" id="P" name="P" placeholder="value should be between 0 to 150"><br><br>
 
-        <label for="K">Potassium (K):</label>
-        <input type="text" id="K" name="K" placeholder="value should be between 0 to 210"><br><br>
+    <form action="{{ url_for('crop_recommendation') }}" method="post" class="row g-3 p-lg-5 p-4 bg-white  theme-shadow" id="model-form" style="display: flex; height: 100vh; flex-direction:column; justify-content: center; align-items: center; margin-top: 40px;">
+        <h1 style="text-align: center; margin-bottom: 40px;">Crop Prediction Form</h1>
+        <div class="form-group col-lg-6">
+        <label for="N">Nitrogen (N):</label><br>
+        <input type="text" id="N" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="N" placeholder="value should be between 0 to 150"><br><br>
 
-        <label for="temperature">Temperature (°C):</label>
-        <input type="text" id="temperature" name="temperature" placeholder="value should be between 0 to 50"><br><br>
+        <label for="P">Phosphorus (P):</label><br>
+        <input type="text" id="P" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="P" placeholder="value should be between 0 to 150"><br><br>
 
-        <label for="humidity">Humidity (%):</label>
-        <input type="text" id="humidity" name="humidity" placeholder="value should be between 10 to 100"><br><br>
+        <label for="K">Potassium (K):</label><br>
+        <input type="text" id="K" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="K" placeholder="value should be between 0 to 210"><br><br>
 
-        <label for="ph">pH:</label>
-        <input type="text" id="ph" name="ph"placeholder="value should be between 3 to 10"><br><br>
+        <label for="temperature">Temperature (°C):</label><br>
+        <input type="text" id="temperature" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="temperature" placeholder="value should be between 0 to 50"><br><br>
 
-        <label for="rainfall">Rainfall (mm):</label>
-        <input type="text" id="rainfall" name="rainfall" placeholder="value should be between 20 to 300"><br><br>
+        <label for="humidity">Humidity (%):</label><br>
+        <input type="text" id="humidity" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="humidity" placeholder="value should be between 10 to 100"><br><br>
 
-        <input type="submit" value="Predict">
+        <label for="ph">pH:</label><br>
+        <input type="text" id="ph" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="ph"placeholder="value should be between 3 to 10"><br><br>
+
+        <label for="rainfall">Rainfall (mm):</label><br>
+        <input type="text" id="rainfall" class="form-control" style="width: 400px; height: 50px; padding-left: 10px" name="rainfall" placeholder="value should be between 20 to 300"><br><br>
+
+        <input type="submit" style="width: 100%; height: 50px; color: white; background-color: black;" onmouseover="this.style.cursor='pointer';" value="Predict">
+    </div>
     </form>
 </body>
 </html>
